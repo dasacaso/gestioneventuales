@@ -136,7 +136,7 @@
                 <!-- loop starts here -->
                 <a href="" class="media-list-link">
                   <div class="media pd-x-20 pd-y-15">
-                    <img src="http://via.placeholder.com/280x280" class="wd-40 rounded-circle" alt="">
+                   <!-- <img src="http://via.placeholder.com/280x280" class="wd-40 rounded-circle" alt="">  DABA ERROR  -->
                     <div class="media-body">
                       <div class="d-flex align-items-center justify-content-between mg-b-5">
                         <p class="mg-b-0 tx-medium tx-gray-800 tx-14">Donna Seay</p>
@@ -149,7 +149,7 @@
                 <!-- loop ends here -->
                 <a href="" class="media-list-link read">
                   <div class="media pd-x-20 pd-y-15">
-                    <img src="http://via.placeholder.com/280x280" class="wd-40 rounded-circle" alt="">
+                   <!-- <img src="http://via.placeholder.com/280x280" class="wd-40 rounded-circle" alt="">   -->
                     <div class="media-body">
                       <div class="d-flex align-items-center justify-content-between mg-b-5">
                         <p class="mg-b-0 tx-medium tx-gray-800 tx-14">Samantha Francis</p>
@@ -250,7 +250,7 @@
           <div class="dropdown">
             <a href="" class="nav-link nav-link-profile" data-toggle="dropdown">
               <span class="logged-name hidden-md-down">Katherine</span>
-              <img src="http://via.placeholder.com/64x64" class="wd-32 rounded-circle" alt="">
+             <!-- <img src="http://via.placeholder.com/64x64" class="wd-32 rounded-circle" alt="">  DABA ERROR -->
               <span class="square-10 bg-success"></span>
             </a>
             <div class="dropdown-menu dropdown-menu-header wd-200">
@@ -676,19 +676,34 @@
     <div class="br-mainpanel">
       <div class="br-pageheader pd-y-15 pd-l-20">
         <nav class="breadcrumb pd-0 mg-0 tx-12">
-          <a class="breadcrumb-item" href="index.html">Bracket</a>
-          <span class="breadcrumb-item active">Blank Page</span>
+          <a class="breadcrumb-item" href="index.html">Mantenimiento</a>
+          <span class="breadcrumb-item active">Personal Eventual</span>
         </nav>
       </div><!-- br-pageheader -->
       <div class="pd-x-20 pd-sm-x-30 pd-t-20 pd-sm-t-30">
-        <h4 class="tx-gray-800 mg-b-5">Blank Page (Default Layout)</h4>
-        <p class="mg-b-0">Introducing Bracket admin template, the most handsome admin template of all time.</p>
+        <h4 class="tx-gray-800 mg-b-5">Gestión del Personal Eventual</h4>
+        <p class="mg-b-0">Desde esta ventana se podrá dar mantenimiento al personal Eventual.</p>
       </div>
+      <div class="br-pagebody">        
+       <div class="br-section-wrapper">
+        <h6 class="tx-gray-800 tx-uppercase tx-bold tx-14 mg-b-10">Mantenimiento de Eventuales</h6>
+        <p class="mg-b-25 mg-lg-b-50">Searching, ordering</p>
 
-      <div class="br-pagebody">
+        <div class="table-wrapper">
+          <table id="eventuales" class="table display responsive nowrap">
+            <thead>
+              <tr>
+                <th class="wd-15p">Nombre</th>
+                <th class="wd-15p"></th>
+                <th class="wd-20p"></th>                  
+              </tr>
+            </thead>
+            <tbody>
 
-        <!-- start you own content here -->
-
+            </tbody>
+          </table>
+        </div>
+       </div>      
       </div><!-- br-pagebody -->
 
     </div><!-- br-mainpanel -->
@@ -702,7 +717,21 @@
     <script src="../../public/lib/jquery-ui/jquery-ui.js"></script>
     <script src="../../public/lib/jquery-switchbutton/jquery.switchButton.js"></script>
     <script src="../../public/lib/peity/jquery.peity.js"></script>
-
     <script src="../../public/js/bracket.js"></script>
+
+    <script src="../../public/lib/datatables/jquery.dataTables.js"></script>
+    <script src="../../public/lib/datatables-responsive/dataTables.responsive.js"></script>
+    <script src="../../public/datatables/dataTables.buttons.min.js"></script>
+    
+    <script src="../../public/datatables/buttons.html5.min.js"></script>
+    <script src="../../public/datatables/buttons.colVis.min.js"></script>
+    <script src="../../public/datatables/jszip.min.js"></script>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+    <script src="../../public/lib/select2/js/select2.min.js"></script>
+
+
+    <script type="text/javascript" src="mntpersona.js"></script>
   </body>
 </html>
