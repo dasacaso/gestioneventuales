@@ -5,9 +5,11 @@
         public function Conexion(){
 
             $host='localhost\SQLEXPRESS';
+            $password='SuperWynd12';
+            //$host='ECWGPSAAPP\SQLEXPRESS';
+            //$password='S@lt02023';
             $dbname='ControlCDP';
             $username='sa';
-            $password='SuperWynd12';
             $puerto=1433;
 
             try{

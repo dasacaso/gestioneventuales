@@ -7,7 +7,7 @@ function init() {
 
 
 $(document).ready(function(){
-    tabla=$('#eventuales').dataTable({
+    tabla=$('#eventuales_data').dataTable({
 		"aProcessing": true,//Activamos el procesamiento del datatables
 	    "aServerSide": true,//Paginación y filtrado realizados por el servidor
 	    dom: 'Bfrtip',//Definimos los elementos del control de tabla
@@ -55,6 +55,40 @@ $(document).ready(function(){
             }
 		}
 	}).DataTable();
+});
+
+function editar(empleado){	
+    console.log (empleado);
+}
+
+function eliminar(empleado){
+    swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!?",
+        icon: "error",
+        showCancelButton: true,        
+        confirmButtonText: "Yes, delete it!",
+        cancelButtonText: "No, cancel!",
+        reverseButtons: true
+    }).then((result) => {
+        if (result.isConfirmed) {       
+                $.post("../../controller/personal.php?op=eliminar",{empleado:empleado},function (data){                    
+                    
+                });
+
+                $('#eventuales_data').DataTable().ajax.reload();
+            swal.fire(
+                'Deleted',
+                'Your file has been deleted.',
+                'success'
+            )
+        }
+    })
+}
+
+$(document).on("click","#btnnuevo", function(){
+    $('#mdltitulo').html('Nuevo Registro');
+    $('#modalmantenimiento').modal('show');
 });
 
 init();

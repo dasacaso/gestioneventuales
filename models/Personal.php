@@ -6,28 +6,28 @@
         public function get_persona(){
             $conectar= parent::Conexion();
            // parent::set_names();
-            $sql="SELECT nombres, apellidos, cod_empleado FROM Empleado WHERE estado='A' and tipo=2";
+            $sql="SELECT empleado, nombres, apellidos, cod_empleado, celular FROM Empleado WHERE estado='A' and tipo=2";
             $sql= $conectar->prepare($sql);
             $sql->execute();            
             return $resultado=$sql->fetchAll();
         }
 
-        public function get_persona_x_id($per_id){
+        public function get_persona_x_id($empleado){
             $conectar= parent::Conexion();
             parent::set_names();
-            $sql="SELECT * FROM Empleado WHERE cod_empleado= ?";
+            $sql="SELECT * FROM Empleado WHERE empleado= ?";
             $sql=$conectar->prepare($sql);
             $sql->bindValue(1,$per_id);
             $sql->execute();
             return $resultado=$sql->fetchAll();
         }
 
-        public function delete_persona($per_id){
+        public function delete_persona($empleado){
             $conectar= parent::Conexion();
             parent::set_names();
-            $sql="UPDATE Empleado set estado='I' WHERE cod_empleado= ?";
+            $sql="UPDATE Empleado set estado='I' WHERE empleado= ?";
             $sql=$conectar->prepare($sql);
-            $sql->bindValue(1,$per_id);
+            $sql->bindValue(1,$empleado);
             $sql->execute();
             return $resultado=$sql->fetchAll();
         }
@@ -75,7 +75,7 @@
                 bithdate=?,
                 idCargo=?,
                 id_Brigada=?,
-                idarea=?  WHERE cod_empleado= ?";
+                idarea=?  WHERE empleado= ?";
             $sql=$conectar->prepare($sql);
             $sql->bindValue(1,$per_nombres);
             $sql->bindValue(2,$per_apellidos);
