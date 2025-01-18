@@ -1,10 +1,10 @@
 var tabla;
 
 function init() {
-    
+    $("#persona_form").on("submit", function(e){
+        guardaryeditar(e);
+    });
 }   
-
-
 
 $(document).ready(function(){
     tabla=$('#eventuales_data').dataTable({
@@ -56,6 +56,29 @@ $(document).ready(function(){
 		}
 	}).DataTable();
 });
+
+function guardaryeditar(e){
+    e.preventDefault();
+    var formData = new FormData($("#persona_form")[0]);
+    $.ajax({
+        url: "../../controller/personal.php?op=guardaryeditar",
+        type: "POST",
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: function(datos){
+            $('#persona_form')[0].reset();
+            $('#modalmantenimiento').modal('hide');
+            $('#eventuales_data').DataTable().ajax.reload();
+             swal.fire(
+                'Registrado!',
+                'Se registro correctamente!',
+                'success'
+             )
+        }
+    });
+} 
+
 
 function editar(empleado){	
     console.log (empleado);

@@ -27,6 +27,7 @@
             if(empty($_POST["empleado"])){
                 if(is_array($datos)==true and count($datos)==0){
                     $persona->insert_persona($_POST["nombres"],$_POST["apellidos"],$_POST["telefono"],$_POST["celular"],$_POST["id"],$_POST["cedula"],$_POST["email"],$_POST["dpto"],$_POST["estado"],$_POST["foto"],$_POST["clase"],$_POST["birthday"],$_POST["cargo"],$_POST["brigada"],$_POST["area"]);
+                    echo ($datos);
                 }
             }else{
                 $persona->update_persona($_POST["empleado"],$_POST["nombres"],$_POST["apellidos"],$_POST["telefono"],$_POST["celular"],$_POST["id"],$_POST["cedula"],$_POST["email"],$_POST["dpto"],$_POST["estado"],$_POST["foto"],$_POST["clase"],$_POST["birthday"],$_POST["cargo"],$_POST["brigada"],$_POST["area"]);
