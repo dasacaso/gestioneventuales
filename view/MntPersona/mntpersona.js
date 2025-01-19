@@ -59,7 +59,7 @@ $(document).ready(function(){
 
 function guardaryeditar(e){
     e.preventDefault();
-    var formData = new FormData($("#persona_form")[0]);
+    var formData = new FormData($("#persona_form")[0]);    
     $.ajax({
         url: "../../controller/personal.php?op=guardaryeditar",
         type: "POST",
@@ -80,8 +80,20 @@ function guardaryeditar(e){
 } 
 
 
-function editar(empleado){	
-    console.log (empleado);
+function editar(empleado){	    
+    $('#mdltitulo').html('Editar Registro');
+    $.post("../../controller/personal.php?op=mostrar",{empleado : empleado},function (data){
+        data = JSON.parse(data);
+        $('#empleado').val(data.empleado);
+        $('#nombres').val(data.nombres);
+        $('#apellidos').val(data.apellidos);
+        $('#telefono').val(data.telefono);
+        $('#celular').val(data.celular);
+        $('#cod_empleado').val(data.cod_empleado);
+        $('#cedula').val(data.cedula);
+        $('#email').val(data.email);        
+    });
+    $('#modalmantenimiento').modal('show');
 }
 
 function eliminar(empleado){
@@ -111,6 +123,8 @@ function eliminar(empleado){
 
 $(document).on("click","#btnnuevo", function(){
     $('#mdltitulo').html('Nuevo Registro');
+    $('#persona_form')[0].reset();
+    $('#empleado').val('');
     $('#modalmantenimiento').modal('show');
 });
 

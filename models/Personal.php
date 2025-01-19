@@ -6,7 +6,7 @@
         public function get_persona(){
             $conectar= parent::Conexion();
            // parent::set_names();
-            $sql="SELECT empleado, nombres, apellidos, cod_empleado, celular FROM Empleado WHERE estado='A' and tipo=2";
+            $sql="SELECT empleado, nombres, apellidos, cod_empleado, celular, casa_telef  FROM Empleado WHERE estado='A' and tipo=2";
             $sql= $conectar->prepare($sql);
             $sql->execute();            
             return $resultado=$sql->fetchAll();
@@ -15,9 +15,9 @@
         public function get_persona_x_id($empleado){
             $conectar= parent::Conexion();
             parent::set_names();
-            $sql="SELECT * FROM Empleado WHERE empleado= ?";
+            $sql="SELECT * FROM Empleado WHERE empleado= ?";  // 32639
             $sql=$conectar->prepare($sql);
-            $sql->bindValue(1,$per_id);
+            $sql->bindValue(1,$empleado);
             $sql->execute();
             return $resultado=$sql->fetchAll();
         }
@@ -32,65 +32,36 @@
             return $resultado=$sql->fetchAll();
         }
 
-         public function insert_persona($per_nombres, $per_apellidos, $per_casa_telef, $per_celular, $per_id, $per_cedula, $per_email, $per_departamento, $per_estado, $per_foto, $per_clase, $per_birthday, $per_cargo, $per_brigada, $per_area){
+         public function insert_persona($nombres, $apellidos, $telefono, $celular, $cod_empleado, $cedula, $email ){
             $conectar= parent::Conexion();
             parent::set_names();
-            $sql="INSERT INTO Empleado (nombres, apellidos, casa_telef, celular, cod_empleado, cedula, email, departamento, estado, foto, tipo, bithdate, idCargo, id_Brigada, now(), idarea)
-                VALUES  (?, ?, ?, ? , ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $sql="INSERT INTO Empleado (nombres, apellidos, casa_telef, celular, cod_empleado, cedula, email, fechaingreso, estado, departamento, idarea, id_brigada, idCargo, tipo)
+                VALUES  (?, ?, ?, ? , ?, ?, ?, getdate(), 'A', 107, 16, 4, 1063, 2 )";
             $sql=$conectar->prepare($sql);
-            $sql->bindValue(1,$per_nombres);
-            $sql->bindValue(2,$per_apellidos);
-            $sql->bindValue(3,$per_casa_telef);
-            $sql->bindValue(4,$per_celular);
-            $sql->bindValue(5,$per_id);
-            $sql->bindValue(6,$per_cedula);
-            $sql->bindValue(7,$per_email);
-            $sql->bindValue(8,$per_departamento);
-            $sql->bindValue(9,$per_estado);
-            $sql->bindValue(10,$per_foto);
-            $sql->bindValue(11,$per_clase);
-            $sql->bindValue(12,$per_birthday);
-            $sql->bindValue(13,$per_cargo);
-            $sql->bindValue(14,$per_brigada);
-            $sql->bindValue(15,$per_area);
-
+            $sql->bindValue(1,$nombres);
+            $sql->bindValue(2,$apellidos);
+            $sql->bindValue(3,$telefono);
+            $sql->bindValue(4,$celular);
+            $sql->bindValue(5,$cod_empleado);
+            $sql->bindValue(6,$cedula);
+            $sql->bindValue(7,$email);            
             $sql->execute();
             return $resultado=$sql->fetchAll();
         }
 
-         public function update_persona($per_id, $per_nombres, $per_apellidos, $per_casa_telef, $per_celular, $per_cedula, $per_email, $per_departamento, $per_foto, $per_clase, $per_birthday, $per_cargo, $per_brigada, $per_area){
+         public function update_persona($empleado, $nombres, $apellidos, $telefono, $celular, $cod_empleado, $cedula, $email ){
             $conectar= parent::Conexion();
             parent::set_names();
-            $sql="UPDATE Empleado set 
-                SET
-                nombres=?,
-                apellidos=?,
-                casa_telef=?,
-                celular=?,
-                cedula=?,
-                email=?,
-                departamento=?,
-                foto=?,
-                tipo=?,
-                bithdate=?,
-                idCargo=?,
-                id_Brigada=?,
-                idarea=?  WHERE empleado= ?";
+            $sql="UPDATE Empleado SET nombres=?, apellidos=?, casa_telef=?, celular=?, cod_empleado=?, cedula=?, email=? WHERE empleado= ?";
             $sql=$conectar->prepare($sql);
-            $sql->bindValue(1,$per_nombres);
-            $sql->bindValue(2,$per_apellidos);
-            $sql->bindValue(3,$per_casa_telef);
-            $sql->bindValue(4,$per_celular);
-            $sql->bindValue(5,$per_cedula);
-            $sql->bindValue(6,$per_email);
-            $sql->bindValue(7,$per_departamento);
-            $sql->bindValue(8,$per_foto);
-            $sql->bindValue(9,$per_clase);
-            $sql->bindValue(10,$per_birthday);
-            $sql->bindValue(11,$per_cargo);
-            $sql->bindValue(12,$per_brigada);
-            $sql->bindValue(13,$per_area);
-            $sql->bindValue(14,$per_id);
+            $sql->bindValue(1,$nombres);
+            $sql->bindValue(2,$apellidos);
+            $sql->bindValue(3,$telefono);
+            $sql->bindValue(4,$celular);
+            $sql->bindValue(5,$cod_empleado);
+            $sql->bindValue(6,$cedula);
+            $sql->bindValue(7,$email);            
+            $sql->bindValue(8,$empleado);
             $sql->execute();
             return $resultado=$sql->fetchAll();
         }
