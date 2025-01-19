@@ -11,6 +11,7 @@
                 $sub_array = array();
                 $sub_array[] = $row["nombres"]." ".$row["apellidos"];
                 $sub_array[] = $row["celular"]."/".$row["casa_telef"];
+                $sub_array[] = $row["dep_descripcion"];
                 $sub_array[] = '<button type="button" onClick="editar('.$row["empleado"].');"  id="'.$row["empleado"].'" class="btn btn-outline-primary btn-icon"><div><i class="fa fa-edit"></i></div></button>';
                 $sub_array[] = '<button type="button" onClick="eliminar('.$row["empleado"].');"  id="'.$row["empleado"].'" class="btn btn-outline-danger btn-icon"><div><i class="fa fa-trash"></i></div></button>';
                 $data[]=$sub_array;
@@ -43,6 +44,7 @@
                     $output["celular"] = $row["celular"];
                     $output["cod_empleado"] = $row["cod_empleado"];
                     $output["cedula"] = $row["cedula"];
+                    $output["id_departamento"] = $row["departamento"];
                     $output["email"] = $row["email"];
                     //$output["birthday"] = $row["birthday"];                    
                 }

@@ -7,6 +7,13 @@ function init() {
 }   
 
 $(document).ready(function(){
+    /* Para usar select2 en el combo de Departamento  */
+  /*   $('#id_departamento').select2({
+        dropdownParent: $("#modalmantenimiento")
+    }); */
+    $.post("../../controller/departamento.php?op=combo",function (data){
+        $("#id_departamento").html(data);        
+    });
     tabla=$('#eventuales_data').dataTable({
 		"aProcessing": true,//Activamos el procesamiento del datatables
 	    "aServerSide": true,//Paginación y filtrado realizados por el servidor
@@ -91,6 +98,7 @@ function editar(empleado){
         $('#celular').val(data.celular);
         $('#cod_empleado').val(data.cod_empleado);
         $('#cedula').val(data.cedula);
+        $('#id_departamento').val(data.id_departamento).trigger('change');
         $('#email').val(data.email);        
     });
     $('#modalmantenimiento').modal('show');
@@ -125,6 +133,13 @@ $(document).on("click","#btnnuevo", function(){
     $('#mdltitulo').html('Nuevo Registro');
     $('#persona_form')[0].reset();
     $('#empleado').val('');
+    $('#nombres').val('');
+    $('#apellidos').val('');
+    $('#telefono').val('');
+    $('#celular').val('');
+    $('#cod_empleado').val('');
+    $('#cedula').val('');
+    $('#id_departamento').val('').trigger('change');
     $('#modalmantenimiento').modal('show');
 });
 

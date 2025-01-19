@@ -31,6 +31,7 @@
               <tr>
                 <th class="wd-30p">Nombre</th>
                  <th class="wd-15p">Teléfono</th>
+                 <th class="wd-15p">Departamento</th>
                 <th class="wd-15p"></th>
                 <th class="wd-15p"></th>                  
               </tr>

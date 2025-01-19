@@ -6,7 +6,9 @@
         public function get_persona(){
             $conectar= parent::Conexion();
            // parent::set_names();
-            $sql="SELECT empleado, nombres, apellidos, cod_empleado, celular, casa_telef  FROM Empleado WHERE estado='A' and tipo=2";
+           /*  $sql="SELECT empleado, nombres, apellidos, cod_empleado, celular, casa_telef  FROM Empleado WHERE estado='A' and tipo=2 and departamento=107"; */
+           $sql="SELECT emp.empleado, emp.nombres, emp.apellidos, emp.cod_empleado, emp.celular, emp.casa_telef, dep.dep_descripcion  FROM Empleado emp
+                inner join Departamento dep on emp.departamento = dep.id_departamento WHERE emp.estado='A' and emp.tipo=2 and emp.departamento=107";
             $sql= $conectar->prepare($sql);
             $sql->execute();            
             return $resultado=$sql->fetchAll();
